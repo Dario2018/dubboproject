@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: dubboprovider
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/dubbo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: chen2018
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      driver-class-name: com.mysql.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+mybatis:
+  type-aliases-package: com.dario.providerdomain
+  mapper-locations: classpath:mapper/*.xml
+dubbo:
+  scan:
+    base-packages: com.dario.dubboprovider.service
+  application:
+    id: dubboprovider
+    name: dubboprovider
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  registry:
+    id: zookeeper
+    address: zookeeper://192.168.187.128:2181

@@ -1,0 +1,22 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: dubboconsumer
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  main:
+    allow-bean-definition-overriding: true
+dubbo:
+  scan:
+    base-packages: com.dario.dubboconsumer.controller
+  application:
+    id: dubboconsumer
+    name: dubboconsumer
+  registry:
+    id: zookeeper
+    address: zookeeper://192.168.187.128:2181
