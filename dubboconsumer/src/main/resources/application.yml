@@ -20,3 +20,9 @@ dubbo:
   registry:
     id: zookeeper
     address: zookeeper://192.168.187.128:2181
+
+# RESTful 风格路径
+rest:
+  path:
+    api:
+      v1: api/v1

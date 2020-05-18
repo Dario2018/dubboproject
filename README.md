@@ -32,6 +32,8 @@
    - http://localhost:9000/swagger-ui.html#/condition-routes-controller
    - http://localhost:9000/#/
    - http://localhost:8088/list
+   - http://localhost:8088/swagger-ui.html
+   - http://localhost:8088/api/v1/consumer/list/goods/1/10
 
 ### bin ：模块中存放的maven打包命令:mymvn.bat clean install
 ### data ：模块中存放的是数据库
