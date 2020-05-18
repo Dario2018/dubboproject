@@ -31,7 +31,7 @@
         <google-guava.version>28.2-jre</google-guava.version>
         <zkclient.version>0.10</zkclient.version>
         <tk-mybatis.version>3.4.4</tk-mybatis.version>
-        <jsckson.version>2.9.10.1</jsckson.version>
+        <jackson.version>2.11.0</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -96,7 +96,7 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jsckson.version}</version>
+                <version>${jackson.version}</version>
             </dependency>
             <!-- Json End-->
 
