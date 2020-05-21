@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin.iml" filepath="$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-distribution/dubbo-admin-distribution.iml" filepath="$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-distribution/dubbo-admin-distribution.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-server/dubbo-admin-server.iml" filepath="$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-server/dubbo-admin-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-ui/dubbo-admin-ui.iml" filepath="$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-ui/dubbo-admin-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin.iml" filepath="$PROJECT_DIR$/dubbo-admin/dubbo-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-distribution/dubbo-admin-distribution.iml" filepath="$PROJECT_DIR$/dubbo-admin/dubbo-admin-distribution/dubbo-admin-distribution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-server/dubbo-admin-server.iml" filepath="$PROJECT_DIR$/dubbo-admin/dubbo-admin-server/dubbo-admin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-ui/dubbo-admin-ui.iml" filepath="$PROJECT_DIR$/dubbo-admin/dubbo-admin-ui/dubbo-admin-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-redisapi/dubbo-redisapi.iml" filepath="$PROJECT_DIR$/dubbo-redisapi/dubbo-redisapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbocommons/dubbocommons.iml" filepath="$PROJECT_DIR$/dubbocommons/dubbocommons.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubboconsumer/dubboconsumer.iml" filepath="$PROJECT_DIR$/dubboconsumer/dubboconsumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbodependencies/dubbodependencies.iml" filepath="$PROJECT_DIR$/dubbodependencies/dubbodependencies.iml" />
@@ -13,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/dubboprovider/dubboprovider.iml" filepath="$PROJECT_DIR$/dubboprovider/dubboprovider.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubboproviderapi/dubboproviderapi.iml" filepath="$PROJECT_DIR$/dubboproviderapi/dubboproviderapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubboproviderdomain/dubboproviderdomain.iml" filepath="$PROJECT_DIR$/dubboproviderdomain/dubboproviderdomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubboredis/dubboredis.iml" filepath="$PROJECT_DIR$/dubboredis/dubboredis.iml" />
     </modules>
   </component>
 </project>

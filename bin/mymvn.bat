@@ -19,6 +19,12 @@ cd ..
 cd dubboprovider
 call mvn clean install
 cd ..
+cd dubbo-redisapi
+call mvn clean install
+cd ..
+cd dubboredis
+call mvn clean install
+cd ..
 cd dubboconsumer
 call mvn clean install
 cd ..

@@ -11,15 +11,30 @@ spring:
       content-type: text/html
   main:
     allow-bean-definition-overriding: true
+#dubbo:
+#  scan:
+#    base-packages: com.dario.dubboconsumer.controller
+#  application:
+#    id: dubboconsumer
+#    name: dubboconsumer
+#  registry:
+#    id: zookeeper
+#    address: zookeeper://192.168.187.128:2181
+
 dubbo:
   scan:
-    base-packages: com.dario.dubboconsumer.controller
+    base-packages: com.dario.dubboprovider.service
   application:
     id: dubboconsumer
     name: dubboconsumer
+  protocol:
+    port: 20881
+    id: dubbo
+    name: dubbo
   registry:
     id: zookeeper
     address: zookeeper://192.168.187.128:2181
+    client: curator
 
 # RESTful 风格路径
 rest:

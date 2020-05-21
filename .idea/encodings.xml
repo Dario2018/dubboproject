@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
-    <file url="file://$PROJECT_DIR$/dubbo-admin-develop" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-distribution" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-server" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/dubbo-admin-develop/dubbo-admin-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-distribution" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-admin/dubbo-admin-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-redisapi" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbocommons" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubboconsumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbodependencies" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubboprovider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubboproviderapi" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubboproviderdomain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubboredis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/redisapi" charset="UTF-8" />
   </component>
 </project>

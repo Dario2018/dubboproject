@@ -16,6 +16,7 @@ spring:
 mybatis:
   type-aliases-package: com.dario.providerdomain
   mapper-locations: classpath:mapper/*.xml
+
 dubbo:
   scan:
     base-packages: com.dario.dubboprovider.service
@@ -23,9 +24,10 @@ dubbo:
     id: dubboprovider
     name: dubboprovider
   protocol:
+    port: 20880
     id: dubbo
     name: dubbo
-    port: 20880
   registry:
     id: zookeeper
     address: zookeeper://192.168.187.128:2181
+    client: curator

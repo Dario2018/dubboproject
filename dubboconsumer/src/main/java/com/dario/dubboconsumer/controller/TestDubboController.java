@@ -1,12 +1,12 @@
 package com.dario.dubboconsumer.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.dario.dubbocommons.constant.DubboVersionConstant;
 import com.dario.providerapi.TestDubboService;
 import com.dario.providerdomain.TestDubbo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

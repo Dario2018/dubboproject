@@ -24,18 +24,38 @@
         <spring-boot-alibaba-dubbo.version>0.2.1.RELEASE</spring-boot-alibaba-dubbo.version>
         <spring-boot-pagehelper.version>1.2.3</spring-boot-pagehelper.version>
         <spring-boot-tk-mybatis.version>1.1.5</spring-boot-tk-mybatis.version>
-        <alibaba-dubbo.version>2.6.8</alibaba-dubbo.version>
+        <!--  <alibaba-dubbo.version>2.6.8</alibaba-dubbo.version>-->
+        <apache-dubbo.version>2.7.7</apache-dubbo.version>
+        <dubbo-spring-boot-starter.version>2.7.6</dubbo-spring-boot-starter.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <kryo-serializers.version>0.26</kryo-serializers.version>
         <kryo.version>2.24.0</kryo.version>
         <google-guava.version>28.2-jre</google-guava.version>
         <zkclient.version>0.10</zkclient.version>
+        <curator.version>4.3.0</curator.version>
         <tk-mybatis.version>3.4.4</tk-mybatis.version>
         <jackson.version>2.11.0</jackson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!--Apache Dubbo-->
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${apache-dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--Apache Dubbo-->
+
             <!-- Dubbo Begin-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -43,17 +63,18 @@
                 <version>${spring-boot-alibaba-druid.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${alibaba-dubbo.version}</version>
-            </dependency>
+            <!--   <dependency>
+                   <groupId>com.alibaba</groupId>
+                   <artifactId>dubbo</artifactId>
+                   <version>${alibaba-dubbo.version}</version>
+               </dependency>
 
-            <dependency>
-                <groupId>com.alibaba.boot</groupId>
-                <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${spring-boot-alibaba-dubbo.version}</version>
-            </dependency>
+               <dependency>
+                   <groupId>com.alibaba.boot</groupId>
+                   <artifactId>dubbo-spring-boot-starter</artifactId>
+                   <version>${spring-boot-alibaba-dubbo.version}</version>
+               </dependency>
+               -->
             <!-- Dubbo End-->
 
             <!-- MyBatis Begin-->
@@ -144,7 +165,6 @@
             </dependency>
             <!-- MySQL End-->
 
-
             <!-- Zookeeper Begin-->
             <dependency>
                 <groupId>com.101tec</groupId>
@@ -152,6 +172,19 @@
                 <version>${zkclient.version}</version>
             </dependency>
             <!-- Zookeeper End-->
+
+            <!--Curator Begin-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <!--Curator End-->
 
         </dependencies>
     </dependencyManagement>

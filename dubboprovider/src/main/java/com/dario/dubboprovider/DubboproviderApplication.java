@@ -3,7 +3,8 @@ package com.dario.dubboprovider;
 /**
 * 相当于gaming-server-service-admin
 * */
-import com.alibaba.dubbo.container.Main;
+
+import org.apache.dubbo.container.Main;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

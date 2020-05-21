@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: dubboredis
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    port: 6379
+    host: 192.168.187.128
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    database: 0
+    timeout: 60000
+dubbo:
+  scan:
+    base-packages: com.dario.dubboredis.impl
+  application:
+    id: dubboredis
+    name: dubboredis
+  protocol:
+    port: 20882
+    id: dubbo
+    name: dubbo
+  registry:
+    id: zookeeper
+    address: zookeeper://192.168.187.128:2181
+    client: curator
+
+
