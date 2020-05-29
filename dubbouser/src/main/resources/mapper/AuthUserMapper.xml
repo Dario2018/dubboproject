@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dario.dubbouser.mapper.AuthUserMapper">
+    <resultMap id="BaseResultMap" type="com.dario.dubbouser.entity.AuthUser">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin"/>
+        <result column="is_superuser" jdbcType="BIT" property="isSuperuser"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="first_name" jdbcType="VARCHAR" property="firstName"/>
+        <result column="last_name" jdbcType="VARCHAR" property="lastName"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="is_staff" jdbcType="BIT" property="isStaff"/>
+        <result column="is_active" jdbcType="BIT" property="isActive"/>
+        <result column="date_joined" jdbcType="TIMESTAMP" property="dateJoined"/>
+    </resultMap>
+
+    <select id="queryAllUsers" parameterType="com.dario.dubbouser.condition.UserCondition" resultMap="BaseResultMap">
+        select * from auth_user where 1=1
+        <if test="username != null and username != ''">
+            and username=#{username}
+        </if>
+        <if test="isSuperuser != null">
+            and is_superuser=#{isSuperuser}
+        </if>
+        order by last_login desc
+    </select>
+
+</mapper>

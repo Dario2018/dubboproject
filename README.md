@@ -38,3 +38,7 @@
 
 ### bin ：模块中存放的maven打包命令:mymvn.bat clean install
 ### data ：模块中存放的是数据库
+
+#### dubbouser 用户中心
+   - 使用MyBatis插件自动生成代码
+#### [springboot 参考项目](https://github.com/fishpro/spring-boot-study)

@@ -1,6 +1,8 @@
+server:
+  port: 8082
 spring:
   application:
-    name: dubboprovider
+    name: dubbouser
   datasource:
     druid:
       url: jdbc:mysql://127.0.0.1:3306/dubbo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
@@ -14,17 +16,20 @@ spring:
   main:
     allow-bean-definition-overriding: true
 mybatis:
-  type-aliases-package: com.dario.providerdomain
+  type-aliases-package: com.dario.dubbouser
   mapper-locations: classpath:mapper/*.xml
+
+jwt:
+  secret: javainuse
 
 dubbo:
   scan:
-    base-packages: com.dario.dubboprovider.service
+    base-packages: com.dario.dubbouser.service
   application:
-    id: dubboprovider
-    name: dubboprovider
+    id: dubbouser
+    name: dubbouser
   protocol:
-    port: 20880
+    port: 20883
     id: dubbo
     name: dubbo
   registry:

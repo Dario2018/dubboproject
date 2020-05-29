@@ -157,6 +157,14 @@
             </dependency>
             <!-- Google End-->
 
+            <!--Http Begin-->
+            <dependency>
+                <groupId>com.github.kevinsawicki</groupId>
+                <artifactId>http-request</artifactId>
+                <version>6.0</version>
+            </dependency>
+            <!--Http End-->
+
             <!-- MySQL Begin-->
             <dependency>
                 <groupId>mysql</groupId>
