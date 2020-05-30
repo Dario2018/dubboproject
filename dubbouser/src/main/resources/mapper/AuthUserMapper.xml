@@ -26,4 +26,8 @@
         order by last_login desc
     </select>
 
+    <select id="findUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from auth_user where 1=1 and username=#{username}
+    </select>
+
 </mapper>

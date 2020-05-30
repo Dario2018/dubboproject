@@ -21,6 +21,7 @@ mybatis:
 
 jwt:
   secret: javainuse
+  header: Authorization
 
 dubbo:
   scan:

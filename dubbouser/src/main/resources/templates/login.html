@@ -12,30 +12,34 @@
     <input id="password" name="password" value="">
 </div>
 <div>
-    <input type="button" id="btnSave"  value="登录">
+    <input type="button" id="btnSave" value="登录">
 </div>
+<!--<script src="/static/js/jquery-1.12.4.min.js"></script>-->
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
 <script>
-    $(function() {
+    $(function () {
         $("#btnSave").click(function () {
-            var username=$("#userName").val();
-            var password=$("#password").val();
+            var username = $("#userName").val();
+            var password = $("#password").val();
             $.ajax({
                 cache: true,
                 type: "POST",
                 url: "/authenticate",
                 contentType: "application/json;charset=UTF-8",
-                data:JSON.stringify({"username":username ,"password" : password}),
+                timeout: 120000,
+                data: JSON.stringify({"username": username, "password": password}),
                 dataType: "json",
                 async: false,
+                success: function (data) {
+                    localStorage.setItem("token", data.jwttoken);
+                    // 其他请求header需要带上token，格式Authorization : Bearer {token}
+                    //可以直接访问
+                    window.location.href="/userapi/home";
+                    //需要令牌才可以访问,这样拼接是访问不了，需要设置在请求的头中
+                    window.location.href="/userapi/hello?Authorization=Bearer "+data.jwttoken;
+                },
                 error: function (request) {
                     console.log("Connection error");
-                },
-                success: function (data) {
-                    //save token
-                    localStorage.setItem("token",data.token);
-
-
                 }
             });
         });
