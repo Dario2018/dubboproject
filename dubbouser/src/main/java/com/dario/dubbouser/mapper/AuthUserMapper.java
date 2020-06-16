@@ -6,10 +6,9 @@ import com.dario.dubbouser.entity.AuthUser;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import tk.mybatis.mapper.MyMapper;
 
 @Repository
-public interface AuthUserMapper extends MyMapper<AuthUser> {
+public interface AuthUserMapper{
 
     Page<AuthUser> queryAllUsers(UserCondition userCondition) throws Exception;
 
