@@ -20,9 +20,10 @@ import java.io.IOException;
 /**
  * 过滤器 用于 Spring Boot Security
  * OncePerRequestFilter 一次请求只通过一次filter，而不需要重复执行
- * */
+ */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
 
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
@@ -38,19 +39,19 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String username = null;
         String jwtToken = null;
-        // JWT Token 获取请求头部的 Bearer
+        // JWT Token 获取请求头部的 Bingo
         // only the Token
-        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bingo ")) {
             jwtToken = requestTokenHeader.substring(7);
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
-                System.out.println("Unable to get JWT Token");
+                logger.error("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
-                System.out.println("JWT Token has expired");
+                logger.error("JWT Token has expired");
             }
         } else {
-            logger.warn("JWT Token does not begin with Bearer String");
+            logger.error("JWT Token does not begin with Bingo String");
         }
 
         // 验证

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dario.dubbouser.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.dario.dubbouser.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="password"  property="password"/>
+        <result column="last_login"  property="lastLogin"/>
+        <result column="is_superuser"  property="isSuperuser"/>
+        <result column="username"  property="username"/>
+        <result column="first_name"  property="firstName"/>
+        <result column="last_name"  property="lastName"/>
+        <result column="email"  property="email"/>
+        <result column="is_staff"  property="isStaff"/>
+        <result column="is_active"  property="isActive"/>
+        <result column="create_time"  property="createTime"/>
+        <result column="company_code"  property="companyCode"/>
+        <result column="user_type"  property="userType"/>
+        <result column="parent_id"  property="parentId"/>
+        <result column="nick_name"  property="nickName"/>
+        <collection property="rolerList" ofType="com.dario.dubbouser.entity.Roler" select="findRoles" column="id">
+            <id column="id" jdbcType="INTEGER" property="id"/>
+            <result column="role_name"  property="roleName"/>
+            <result column="user_id" property="userId"/>
+            <result column="company_code"  property="companyCode"/>
+            <result column="role_type"  property="roleType"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryAllUsers" parameterType="com.dario.dubbouser.condition.UserCondition" resultMap="BaseResultMap">
+        select * from wb_user where 1=1
+        <if test="username != null and username != ''">
+            and username=#{username}
+        </if>
+        <if test="isSuperuser != null">
+            and is_superuser=#{isSuperuser}
+        </if>
+        order by last_login desc
+    </select>
+
+    <select id="findUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from wb_user where 1=1 and username=#{username}
+    </select>
+
+    <select id="findUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from wb_user where 1=1 and email=#{email}
+    </select>
+
+    <select id="findRoles" parameterType="java.lang.Long" resultType="com.dario.dubbouser.entity.Roler">
+        select id,role_name,user_id,company_code,role_type FROM wb_role where user_id=#{id}
+    </select>
+
+</mapper>

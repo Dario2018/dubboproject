@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // 本示例不需要使用CSRF
-        String[] authorizeRequestUrl = {"/authenticate", "/", "/userapi/login", "/userapi/home", "/static/**", "/css/**"};
+        String[] authorizeRequestUrl = {"/authenticate", "/","/auth/login","/static/**", "/css/**"};
         httpSecurity.csrf().disable()
                 // 认证页面不需要权限
                 .authorizeRequests().antMatchers(authorizeRequestUrl).permitAll()
