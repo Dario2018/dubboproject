@@ -1,5 +1,7 @@
 server:
   port: 8086
+  servlet:
+    context-path: /dubbouser
 spring:
   application:
     name: dubbouser
@@ -18,10 +20,12 @@ spring:
 mybatis:
   type-aliases-package: com.dario.dubbouser
   mapper-locations: classpath:mapper/*.xml
-
+  configuration:
+    map-underscore-to-camel-case: true
 jwt:
-  secret: javainuse
-  header: Authorization
+  secret: yixK4P9oHTiXitQ8jn2OjxGzy7hu8cNQU3nhPOvOXgRK83dHWe5R9Xi9an67ob6Z
+  header: dubboUserAccessToken
+  expiration: 18000
 
 dubbo:
   scan:
@@ -37,3 +41,7 @@ dubbo:
     id: zookeeper
     address: zookeeper://192.168.187.128:2181
     client: curator
+logging:
+  level:
+    com.dario.dubbouser.mapper: debug
+

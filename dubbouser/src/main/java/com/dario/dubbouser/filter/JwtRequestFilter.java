@@ -22,7 +22,7 @@ import java.io.IOException;
  * OncePerRequestFilter 一次请求只通过一次filter，而不需要重复执行
  */
 @Component
-public class JwtRequestFilter extends OncePerRequestFilter {
+public class JwtRequestFilter extends OncePerRequestFilter  {
 
 
     @Autowired
@@ -35,14 +35,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 
-        final String requestTokenHeader = request.getHeader("Authorization");
+        // token 值
+        final String jwtToken = request.getHeader(jwtTokenUtil.getHeader());
 
         String username = null;
-        String jwtToken = null;
-        // JWT Token 获取请求头部的 Bingo
-        // only the Token
-        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bingo ")) {
-            jwtToken = requestTokenHeader.substring(7);
+
+        if (jwtToken != null) {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
@@ -50,10 +48,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             } catch (ExpiredJwtException e) {
                 logger.error("JWT Token has expired");
             }
-        } else {
-            logger.error("JWT Token does not begin with Bingo String");
         }
-
         // 验证
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 

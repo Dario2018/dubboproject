@@ -10,22 +10,25 @@ import com.dario.dubbouser.dto.JwtResponse;
 import com.dario.dubbouser.service.Impl.JwtUserDetailsService;
 import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 用于验证 jwt 返回客户端 jwt（json web token）
  */
-@RestController("/auth")
+@RestController
+@RequestMapping("/auth")
 @CrossOrigin
 public class JwtAuthenticationController {
 
@@ -41,34 +44,34 @@ public class JwtAuthenticationController {
     @Autowired
     private UserService userService;
 
-    @Value("${jwt.header}")
-    private String tokenHeader;
-
-
     /**
      * 登录过程
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResultVO login(@RequestBody LoginUserVO userVO) throws Exception {
+    public ResponseEntity<?> login(@RequestBody LoginUserVO userVO) throws Exception {
 
-        if (Strings.isNullOrEmpty(userVO.getEmail()) || !(userVO.getEmail().contains("@") && userVO.getEmail().contains(".com"))) {
-            return ResultVO.builder().message("邮箱为空或者不符合邮箱格式").code(HttpServletResponse.SC_BAD_REQUEST).build();
+
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$");
+        Matcher matcher = pattern.matcher(userVO.getEmail());
+        if (Strings.isNullOrEmpty(userVO.getEmail())|| !matcher.matches()) {
+            return ResponseEntity.ok(ResultVO.builder().message("邮箱为空或者不符合邮箱格式").code(HttpServletResponse.SC_BAD_REQUEST).build());
         }
 
         User userByEmail = userService.findUserByEmail(userVO.getEmail());
         if (userByEmail == null) {
-            return ResultVO.builder().message(String.format("%s用户不存在", userVO.getEmail())).code(HttpServletResponse.SC_NOT_FOUND).build();
+            return ResponseEntity.ok(ResultVO.builder().message(String.format("%s用户不存在", userVO.getEmail())).code(HttpServletResponse.SC_NOT_FOUND).build());
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (!encoder.matches(userVO.getPassword(), userByEmail.getPassword())) {
-            return ResultVO.builder().message("登录密码不正确").code(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.ok(ResultVO.builder().message("登录密码不正确").code(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build());
         }
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(userByEmail.getUsername());
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword()));
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword()));
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResultVO.builder().code(HttpServletResponse.SC_OK).message("succeed").data(token).build();
+        return ResponseEntity.ok(ResultVO.builder().code(HttpServletResponse.SC_OK).message("succeed").data(token).build());
     }
 
     /**

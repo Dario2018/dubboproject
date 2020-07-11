@@ -28,12 +28,6 @@ public class Roler implements Serializable {
     @Column(name = "role_name")
     private String roleName; //角色名称
 
-    @Column(name = "user_id")
-    private Long userId;
-
-    @Column(name = "company_code")
-    private String companyCode;
-
     @Column(name = "role_type")
     private Integer roleType;
 

@@ -12,6 +12,7 @@ import java.io.Serializable;
 /**
  * AuthenticationEntryPoint 用来解决匿名用户访问无权限资源时的异常
  * AccessDeineHandler 用来解决认证过的用户访问无权限资源时的异常
+ * 用户页面没有授权时的返回
  * */
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
