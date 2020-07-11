@@ -41,4 +41,12 @@
 
 #### dubbouser 用户中心
    - 使用MyBatis插件自动生成代码
+   - dubbouser 登录模块总结：
+      - （1）注意url权限的配置 ，只需要从controller里面开始就可以了，不必管yml 中配置context-path前置属性，只需知道访问前要先带上其即可
+      - （2）注意controller里面类上访问url是在requestmapping注解中，而不是在restcontroller注解中，这个错误犯下不知一次了，这次报Unauthorized错误，401没有权限错误，找问题花了很长时间。谨此教训
+      - （3）新增的功能有对大多请求的url需要授权才可以访问的
+      - （4）配置log日志，打印输出sql语句，配置令牌密钥，过期时间为5小时。
+      - （5）修改了原来的数据表
+   - 后期规划：
+      - 加入vue前端项目 
 #### [springboot 参考项目](https://github.com/fishpro/spring-boot-study)
