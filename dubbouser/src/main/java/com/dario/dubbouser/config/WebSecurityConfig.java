@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 // 认证页面不需要权限
-                .authorizeRequests().antMatchers("/auth/**").permitAll()
+                .authorizeRequests().antMatchers("/auth/**","/user/info").permitAll()
                 //其他页面
                 .anyRequest().authenticated()
                 .and()

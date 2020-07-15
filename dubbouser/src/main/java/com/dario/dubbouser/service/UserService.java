@@ -11,5 +11,8 @@ public interface UserService {
     ResultVO queryAllUsers(UserCondition userCondition);
 
 
-    public User findUserByEmail(String email) throws Exception;
+    User findUserByEmail(String email) throws Exception;
+
+    User findUserByUsername(String username) throws Exception;
+
 }

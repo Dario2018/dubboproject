@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
     public User findUserByEmail(String email) throws Exception {
         return userMapper.findUserByEmail(email);
     }
+
+    @Override
+    public User findUserByUsername(String username) throws Exception {
+        return userMapper.findUserByUsername(username);
+    }
 }

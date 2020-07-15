@@ -48,30 +48,33 @@ public class JwtAuthenticationController {
      * 登录过程
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> login(@RequestBody LoginUserVO userVO) throws Exception {
+    public ResultVO login(@RequestBody LoginUserVO userVO) throws Exception {
 
+        if (Strings.isNullOrEmpty(userVO.getEmail())||Strings.isNullOrEmpty(userVO.getPassword())){
+            return ResultVO.builder().message("参数不能为空").code(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build();
+        }
 
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$");
         Matcher matcher = pattern.matcher(userVO.getEmail());
         if (Strings.isNullOrEmpty(userVO.getEmail())|| !matcher.matches()) {
-            return ResponseEntity.ok(ResultVO.builder().message("邮箱为空或者不符合邮箱格式").code(HttpServletResponse.SC_BAD_REQUEST).build());
+            return ResultVO.builder().message("邮箱为空或者不符合邮箱格式").code(HttpServletResponse.SC_BAD_REQUEST).build();
         }
 
         User userByEmail = userService.findUserByEmail(userVO.getEmail());
         if (userByEmail == null) {
-            return ResponseEntity.ok(ResultVO.builder().message(String.format("%s用户不存在", userVO.getEmail())).code(HttpServletResponse.SC_NOT_FOUND).build());
+            return ResultVO.builder().message(String.format("%s用户不存在", userVO.getEmail())).code(HttpServletResponse.SC_NOT_FOUND).build();
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
         if (!encoder.matches(userVO.getPassword(), userByEmail.getPassword())) {
-            return ResponseEntity.ok(ResultVO.builder().message("登录密码不正确").code(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build());
+            return ResultVO.builder().message("登录密码不正确").code(HttpServletResponse.SC_INTERNAL_SERVER_ERROR).build();
         }
 
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(userByEmail.getUsername());
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword()));
-//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword()));
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(ResultVO.builder().code(HttpServletResponse.SC_OK).message("succeed").data(token).build());
+        return ResultVO.builder().code(HttpServletResponse.SC_OK).message("succeed").data(token).build();
     }
 
     /**
