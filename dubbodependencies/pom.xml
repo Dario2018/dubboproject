@@ -30,7 +30,7 @@
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <kryo-serializers.version>0.26</kryo-serializers.version>
         <kryo.version>2.24.0</kryo.version>
-        <google-guava.version>28.2-jre</google-guava.version>
+        <google-guava.version>29.0-jre</google-guava.version>
         <zkclient.version>0.10</zkclient.version>
         <curator.version>4.3.0</curator.version>
         <tk-mybatis.version>3.4.4</tk-mybatis.version>
