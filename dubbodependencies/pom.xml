@@ -25,7 +25,7 @@
         <spring-boot-pagehelper.version>1.2.3</spring-boot-pagehelper.version>
         <spring-boot-tk-mybatis.version>1.1.5</spring-boot-tk-mybatis.version>
         <!--  <alibaba-dubbo.version>2.6.8</alibaba-dubbo.version>-->
-        <apache-dubbo.version>2.7.7</apache-dubbo.version>
+        <apache-dubbo.version>2.7.15</apache-dubbo.version>
         <dubbo-spring-boot-starter.version>2.7.6</dubbo-spring-boot-starter.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <kryo-serializers.version>0.26</kryo-serializers.version>
